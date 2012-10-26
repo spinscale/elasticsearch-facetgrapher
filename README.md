@@ -14,7 +14,7 @@ bin/plugin -install spinscale/elasticsearch-facetgrapher
 
 Then Open this URL in your browser
 
-http://localhost:9200/_plugins/elasticsearch-facetgrapher/index.html
+[http://localhost:9200/_plugin/facetgrapher/index.html](http://localhost:9200/_plugin/facetgrapher/index.html)
 
 After opening the URL, an AJAX request to the cluster state API will be issued automatically.
 The request will check for any fields which are of type "date" in your indices. These will be available in the dropdowns.
