@@ -31,6 +31,7 @@ $(document).ready(function() {
   $("div.data-select select[name=index]").on('change', function(evt) {
   	var index = $(evt.target).find("option:selected").val()
     _.each(_.keys(fields[index]), function(type) {
+      $(evt.target).parent().find("select[name=type] option").remove()
       $(evt.target).parent().find("select[name=type]").append(new Option(type, type))
       $(evt.target).parent().find("select[name=type]").trigger('change')
     })
@@ -41,6 +42,7 @@ $(document).ready(function() {
   	var type = $(evt.target).find("option:selected").val()
   	var index = $(evt.target).parent().find("select[name=index] option:selected").val()
     _.each(fields[index][type], function(field) {
+      $(evt.target).parent().find("select[name=field] option").remove()
       $(evt.target).parent().find("select[name=field]").append(new Option(field, field))
     })
   })
