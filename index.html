@@ -30,8 +30,8 @@ $(document).ready(function() {
   // add listener to the index select forms (and to those which will be created)
   $("div.data-select select[name=index]").on('change', function(evt) {
   	var index = $(evt.target).find("option:selected").val()
+    $(evt.target).parent().find("select[name=type] option").remove()
     _.each(_.keys(fields[index]), function(type) {
-      $(evt.target).parent().find("select[name=type] option").remove()
       $(evt.target).parent().find("select[name=type]").append(new Option(type, type))
       $(evt.target).parent().find("select[name=type]").trigger('change')
     })
@@ -41,8 +41,8 @@ $(document).ready(function() {
   $("div.data-select select[name=type]").on('change', function(evt) {
   	var type = $(evt.target).find("option:selected").val()
   	var index = $(evt.target).parent().find("select[name=index] option:selected").val()
+    $(evt.target).parent().find("select[name=field] option").remove()
     _.each(fields[index][type], function(field) {
-      $(evt.target).parent().find("select[name=field] option").remove()
       $(evt.target).parent().find("select[name=field]").append(new Option(field, field))
     })
   })
