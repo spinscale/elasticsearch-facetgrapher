@@ -81,7 +81,7 @@ function configureIndices(data) {
 		_.each(_.keys(data.metadata.indices[idx].mappings), function(key) {
 			_.each(data.metadata.indices[idx].mappings[key], function(mapping) {
 				_.each(_.keys(mapping), function(field) {
-					if (data.metadata.indices[idx].mappings[key].properties[field].type == 'date') {
+					if (data.metadata.indices[idx].mappings[key].properties[field] && data.metadata.indices[idx].mappings[key].properties[field].type == 'date') {
 						if (_.isUndefined(fields[idx])) fields[idx] = {}						
 						if (_.isUndefined(fields[idx][key])) fields[idx][key] = []
 						fields[idx][key].push(field)
