@@ -112,7 +112,9 @@ function executeRequest() {
      var legend = $(this).find('input[name=legend]').val()
      
      var url = "/" + index + "/" + type +"/_search?size=0"
-     $.ajax({processData : false,  url : url, type: "POST", dataType: "json", data : JSON.stringify({ "facets" : { "data" : { "date_histogram": { "field" : field, "interval" : interval }, "facet_filter" : { "range" :  { "date" : { "from" : from, "to" : to } } } } } }), success : function(data) { drawChart(data, {color: color, legend: legend}) } })
+     var facetFilter = {}
+     facetFilter[field] = { "from" : from, "to" : to }
+     $.ajax({processData : false,  url : url, type: "POST", dataType: "json", data : JSON.stringify({ "facets" : { "data" : { "date_histogram": { "field" : field, "interval" : interval }, "facet_filter" : { "range" : facetFilter } } } }), success : function(data) { drawChart(data, {color: color, legend: legend}) } })
    })
 }
 
